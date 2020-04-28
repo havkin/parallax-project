@@ -3,7 +3,7 @@
     <div 
       class="relax"
       v-rellax="{
-      speed: -10,
+      speed: 3,
       vertical: false,
       horizontal: true
     }"
