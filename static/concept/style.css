@@ -3,16 +3,19 @@ body {
   margin: 0;
   padding: 0;
   font-size: 14px;
+  height: 100%;
+  width: 100%;
 }
 .main-container {
   width: 100%;
-  height: 100%;
+  height: 98vh;
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(to right top, #c9b6a7, #c4bba7, #bcc1ab, #b3c6b3, #abcabf, #abc9be, #abc8bd, #abc7bc, #b2c1b0, #b8baa9, #bcb4a5, #bcaea5);
 }
 header {
   justify-self: center;
+  height: 40%;
 }
 h1 {
   color: #364B44;
@@ -66,18 +69,19 @@ h1 {
   left: -15px;
 }
 .parallax-container {
-  position: relative;
-  top: -100%;
-  display: flex;
+  height: 60%;
   width: 180%;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 .scroll-container {
-  height: 600px;
+  position: absolute;
+  height: 60%;
   width: 180vw;
   z-index: 10;
+  bottom: 0px;
+  left: 0px;
 }
 .parallax-layer-1 {
   outline: 1px dotted black;

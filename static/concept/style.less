@@ -3,6 +3,8 @@ html, body {
     margin: 0;
     padding: 0;
     font-size: 14px;
+    height: 100%;
+    width: 100%;
 }
 
 ////////////////////////////PAGE//////////////////////////////////////////////////
@@ -10,7 +12,7 @@ html, body {
 
 .main-container {
     width: 100%;
-    height: 100%;
+    height: 98vh;
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(to right top, #c9b6a7, #c4bba7, #bcc1ab, #b3c6b3, #abcabf, #abc9be, #abc8bd, #abc7bc, #b2c1b0, #b8baa9, #bcb4a5, #bcaea5);
@@ -18,6 +20,7 @@ html, body {
 
 header {
     justify-self: center;
+    height: 40%;
 }
 
 h1 {
@@ -87,11 +90,7 @@ h1 {
 ////////////////////////////PARALLAX////////////////////////////////////////////////
 
 .parallax-container {
-    position: relative;
-    top: -100%;
-    display: flex;
-    // bottom: 0px;
-    // left: 0px;
+    height: 60%;
     width: 180%;
     flex-direction: column;
     flex-wrap: wrap;
@@ -99,12 +98,12 @@ h1 {
 }
 
 .scroll-container {
-    //position: absolute;
-    height: 600px;
+    position: absolute;
+    height: 60%;
     width: 180vw;
     z-index: 10;
-    // bottom: 0px;
-    // left: 0px;
+    bottom: 0px;
+    left: 0px;
 }
 
 .parallax-layer-1 {
