@@ -75,5 +75,12 @@
 }
 
 .container {
-    margin: 50px 100px;
+    position: absolute;
+    width: 150%;
+    bottom: 50px;
+    left: 20px;
+}
+
+body {
+    /*overflow-x: hidden;*/
 }
