@@ -1,0 +1,26 @@
+scale 
+
+{
+   hash: String,     // id маршрута 
+   id: Number,       // id шкалы
+   order: Number,    // позиция шкалы
+   start: Number,    // начальное значение шкалы
+   stop: Number,     // конечное значение
+   step: Number,     // шаг шкалы
+   unit: String      // единица измерения
+}
+
+scale_tags 
+
+{
+   scale_id: Number,    // id шкалы
+   tags: Array
+      [
+         {
+            id: Number,       //  id тэга
+            position: Number, //  позиция
+            type: String,     // тип [text, link]
+            value: String     // 
+         }
+      ]
+}
