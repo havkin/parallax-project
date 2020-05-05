@@ -17,7 +17,11 @@
     }"
     >I’m super fast!!</div>
 
-    <scale />
+    <scale 
+      :startDate="2010"
+      :endDate="2028"
+      :step="1"
+    />
     
   </div>
 </template>

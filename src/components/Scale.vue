@@ -3,47 +3,107 @@
     <h1>scale</h1>
 
     <div class="container">
-      <div id="timeline" class="timeline">
-         <div class="year">
-            <div class="">
+      <svg
+        :width="xEnd"
+        height="50%"
+      >
 
-            </div>
+        <line 
+          :x1="x0" 
+          y1="80" 
+          :x2="xEnd" 
+          y2="80" 
+          style="stroke:rgb(0,0,0);stroke-width:2"/>
 
-         </div>
-        <div id="timeline-track" class="timeline-track">
+        <line 
+          v-for="line in smallMarksArr"
+          :key="line.x"
+          :x1="line.x" 
+          y1="80" 
+          :x2="line.x" 
+          y2="60" 
+          style="stroke:rgb(0,0,0);stroke-width:1" />
 
-        </div>
-      </div>
+        <line 
+          v-for="(line, index) in marksArr"
+          :key="index+1"
+          :x1="line.x" 
+          y1="80" 
+          :x2="line.x" 
+          y2="30" 
+          style="stroke:rgb(0,0,0);stroke-width:2" />
+
+        <text 
+          v-for="mark in signsArr"
+          :key="mark.value"
+          :x="mark.x" 
+          y="95" 
+          fill="black"
+        >
+          {{ mark.value }}
+        </text>
+
+      </svg>
     </div>
   </div>
 </template>
 
+
 <script>
 export default {
   name: "Scale",
+  props: {
+    startDate: Number,
+    endDate: Number,
+    step: Number
+  },
   data() {
     return {
-      scale: {
-        id: "$uuid",
-        startDate: 2005,
-        endDate: 2010,
-        position: 1,
-        subscript: "года",
-        version: 1,
-        pageHash: "s8GH2598"
-      },
-      barStep: 1,
-      years: [],
+      wpx: window.screen.availWidth,
+      x0: 0,
+      xEnd: 0,
+      marksArr: [],
+      signsArr: [],
+      smallMarksArr: [],
     }
   },
 
+  created() {
+    this.calculateScale()
+  },
+
    methods: {
-      printBar () {
-         const barDuration = this.scale.endDate - this.scale.startDate;
-         this.barStep = barDuration > 20 ? 5 : 1;
-         for (let year = this.scale.startDate; year <= this.scale.endDate; year +=  this.barStep) {
-            this.years.push(year);
-         }
+      calculateScale() {
+        const x0 = 0;
+        this.xEnd = Math.ceil(this.wpx * 1.3);
+        const minMarkStep = Math.ceil(this.wpx / 10);
+        
+        let markQnt = Math.ceil((this.endDate - this.startDate) / this.step );
+        let markStep = Math.floor(this.xEnd / markQnt);
+
+        if (markStep < minMarkStep) {
+          this.xEnd = minMarkStep * markQnt;
+          markStep = minMarkStep;
+        }
+
+        let sign = this.startDate;
+        for (let x = x0; x <= this.xEnd; x += markStep) {
+          this.marksArr.push({x})
+          this.signsArr.push({
+            x,
+            value: String(sign)})
+          sign += this.step
+        }
+
+        let smallMarkQnt = 12 * markQnt;
+        if (this.step !== 1) {
+          smallMarkQnt = this.step * markQnt
+        }
+        const smallMArkStep = Math.floor(this.xEnd / smallMarkQnt)
+
+        for (let x = x0; x <= this.xEnd; x += smallMArkStep) {
+          this.smallMarksArr.push({x})
+        }
       }
    }
 
