@@ -16,16 +16,20 @@
       horizontal: true
     }"
     >I’m super fast!!</div>
+
+    <scale />
     
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Scale from '@/components/Scale'
 
 export default {
   name: "Home",
-  components: {},
+  components: {
+    Scale
+  },
   methods: {
     wheelHandler(event) {
       // console.log(event)
